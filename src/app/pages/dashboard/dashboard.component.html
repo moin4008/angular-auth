@@ -1,0 +1,227 @@
+<!-- Make sure Font Awesome is included -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" /> -->
+
+<!-- *** CHANGE WRAPPER CLASS HERE *** -->
+<div class="page-wrapper-light" *ngIf="user">
+
+    <!-- Header Section -->
+    <header class="page-header">
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- === UPDATE IMAGE PATH === -->
+        <img src="../../../assets/Screenshot.png" alt="K-Land Logo" class="logo"> <!-- *** UPDATE PATH *** -->
+        <div class="text-center title-section">
+          <h1 class="page-title">MY ACCOUNT</h1>
+          <p class="page-subtitle">Manage Your Fun: View Tickets, Book Zones, and Track Your Adventure!</p>
+        </div>
+        <div class="header-controls d-flex align-items-center">
+          <a href="#" class="language-link me-3">العربية</a>
+          <button class="navbar-toggler" type="button">
+              <i class="fas fa-bars"></i> <!-- Hamburger Icon -->
+          </button>
+        </div>
+      </div>
+    </header><br>
+
+    <!-- User Summary Bar -->
+    <div class="container user-summary-bar">
+        <div class="card shadow-sm" style="background-color: #ffffff;">
+            <div class="card-body d-flex align-items-center">
+                 <!-- === UPDATE IMAGE PATH & Placeholder Style === -->
+                <img src="../../../assets/user.jpg" alt="User" class="profile-pic-small me-3"> <!-- *** UPDATE PATH *** -->
+                <div>
+                    <h5 class="mb-0 user-name-display">{{ firstName }} {{ lastName }}</h5>
+                    <p class="text-muted mb-0 user-contact-display">+{{ phoneCountryCode }} {{ phoneNumber }}</p>
+                    <p class="text-muted mb-0 user-contact-display">{{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Content Area -->
+    <main class="container mt-4 mb-5 main-content-area" style="background-color: #ffffff; border-radius: 10px; width: 100%;">
+      <div class="row">
+
+        <!-- Left Sidebar Navigation -->
+        <div class="col-lg-3" >
+          <div class="card shadow-sm sidebar-nav">
+            <div class="card-body p-0" style="background-color: #ffffff; ">
+              <ul class="list-group list-group-flush">
+                <!-- Active state for Edit Profile -->
+                <li class="list-group-item active">
+                  <!-- *** Icons might need slight class changes based on Font Awesome version / desired style *** -->
+                  <a href="#"> <i class="fas fa-user-edit me-2 icon-teal"></i> Edit Profile </a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#"> <i class="fas fa-question-circle me-2 icon-grey"></i> FAQS </a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#"> <i class="fas fa-headset me-2 icon-grey"></i> Contact Us </a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#"> <i class="fas fa-user-slash me-2 icon-grey"></i> Delete Account </a>
+                </li>
+                <li class="list-group-item logout-item"> <!-- No border-bottom needed here -->
+                  <a href="#" (click)="authServiceGetter.logout(); $event.preventDefault()">
+                    <i class="fas fa-sign-out-alt me-2 icon-red"></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content Panel (Personal Information Form) -->
+        <div class="col-lg-9">
+          <div class="card shadow-sm content-panel">
+            <div class="card-body p-4" style="background-color: #ffffff; border-radius: 10px;">
+              <h3 class="mb-4 panel-title">PERSONAL INFORMATION</h3>
+
+              <!-- Profile Pic and Name/Email inside Form Panel -->
+              <div class="d-flex align-items-center mb-4 profile-header">
+                  <div class="position-relative me-3">
+                       <!-- === UPDATE IMAGE PATH & Placeholder Style === -->
+                      <img src="../../../assets/user.jpg" alt="Profile" class="profile-pic-large"> <!-- *** UPDATE PATH *** -->
+                      <button class="btn btn-light btn-sm rounded-circle edit-pic-btn">
+                          <i class="fas fa-camera"></i> <!-- Camera Icon -->
+                      </button>
+                  </div>
+                  <div>
+                      <h4 class="mb-0 user-name-display">{{ firstName }} {{ lastName }}</h4>
+                      <p class="text-muted mb-0 user-contact-display">{{ user.email }}</p>
+                  </div>
+              </div>
+
+              <!-- The Form -->
+              <form (ngSubmit)="saveProfile()">
+                <!-- First Name / Last Name Row -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="firstName" placeholder="Test">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lastName" placeholder="Test">
+                  </div>
+                </div>
+
+                <!-- Email Address -->
+                <div class="mb-3">
+                  <label for="emailAddress" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="emailAddress" name="emailAddress" [value]="user.email" placeholder="test@yopmail.com" readonly>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="mb-4">
+                  <label for="phoneNumber" class="form-label">Phone Number</label>
+                  <div class="input-group">
+                    <select class="form-select phone-code-select" id="phoneCode" name="phoneCode" [(ngModel)]="phoneCountryCode">
+                      <option value="965">965</option>
+                      <!-- Add other options -->
+                    </select>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" placeholder="98563214">
+                  </div>
+                </div>
+
+                 <!-- *** PASSWORD FIELDS WITH EYE ICONS *** -->
+                 <div class="row mb-3">
+                     <div class="col-md-6">
+                         <label for="oldPassword" class="form-label">Old Password</label>
+                         <div class="input-group">
+                             <!-- *** Assume togglePasswordVisibility toggles the input type between 'password' and 'text' *** -->
+                             <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Enter your current password">
+                             <button class="btn btn-outline-secondary toggle-password" type="button" (click)="togglePasswordVisibility($event)">
+                                 <i class="fas fa-eye-slash"></i> <!-- Eye icon - change class in TS if needed -->
+                             </button>
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="newPassword" class="form-label">New Password</label>
+                         <div class="input-group">
+                             <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter your new password">
+                              <button class="btn btn-outline-secondary toggle-password" type="button" (click)="togglePasswordVisibility($event)">
+                                 <i class="fas fa-eye-slash"></i>
+                             </button>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="row mb-4">
+                     <div class="col-md-6">
+                         <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                         <div class="input-group">
+                             <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm your new password">
+                              <button class="btn btn-outline-secondary toggle-password" type="button" (click)="togglePasswordVisibility($event)">
+                                 <i class="fas fa-eye-slash"></i>
+                             </button>
+                         </div>
+                     </div>
+                 </div>
+                <!-- End Password Section -->
+
+                <!-- Save Button -->
+                <button type="submit" class="btn btn-save w-100 mt-3">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- End Row -->
+    </main> <!-- End Main Container -->
+
+    <!-- *** NEW FOOTER STRUCTURE *** -->
+    <footer class="page-footer text-white pt-5 pb-4">
+        <div class="container" >
+            <!-- Quick Links Section -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 text-center">
+                    <h5 class="footer-title mb-3">Quick links</h5>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-unstyled footer-links row text-center">
+                        <li class="col-6"><a href="#">Press</a></li>
+                        <li class="col-6"><a href="#">FAQS</a></li>
+                        <li class="col-6"><a href="#">Contact us</a></li>
+                        <li class="col-6"><a href="#">About us</a></li>
+                        <li class="col-6"><a href="#">Join the team</a></li>
+                        <li class="col-6"><a href="#">Terms & conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="footer-divider my-4"> <!-- Horizontal line -->
+
+            <!-- Bottom Row: Policy, Copyright, Follow, Presented -->
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-2"><a href="#" class="copyright-text privacy-link">PRIVACY POLICY</a></p>
+                    <p class="mb-0 copyright-text">Copyright © 2024 K-Land. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                     <div class="d-inline-block me-md-5 mb-3 mb-md-0 text-center">
+                        <h5 class="footer-title footer-title-small mb-2">FOLLOW US</h5>
+                        <!-- <a href="#" class="social-icon">
+                             <img src="assets/instagram-icon-circle-grey.png" alt="Instagram"> 
+                        </a> -->
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <h5 class="footer-title footer-title-small mb-2">PRESENTED BY</h5>
+                         <!-- === UPDATE IMAGE PATH === -->
+                        <img src="../../../assets/Screenshot.png" alt="K-Land Footer Logo" class="footer-logo"> <!-- *** UPDATE PATH *** -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- *** END NEW FOOTER STRUCTURE *** -->
+
+</div> <!-- End Page Wrapper -->
+
+<!-- Loading/Error State -->
+<div *ngIf="!user" class="container mt-5 text-center">
+      <p>Loading user data...</p>
+       <div class="spinner-border text-teal" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+</div>

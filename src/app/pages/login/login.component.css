@@ -1,0 +1,153 @@
+/* Use a container to center the card and apply background */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    /* Add your background image here */
+    background: url('../../../assets/login-background.png') no-repeat center center fixed;
+    /* Fallback background if image fails or is transparent */
+    background-color: #e0e0e0; /* Placeholder color */
+    background-size: cover; /* Cover the entire viewport */
+  }
+  
+  .login-card {
+    background-color: #ffffff;
+    padding: 40px 30px; /* More padding */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    max-width: 642px;
+    width: 100%; /* Responsive width */
+    text-align: center; /* Center logo and title initially */
+  }
+  
+  .logo {
+    max-width: 180px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 1.5rem; /* More space below logo */
+  }
+  
+  .login-title {
+    font-family: 'Times New Roman', Times, serif; /* Or a similar serif font */
+    font-size: 0.9rem; /* Smaller size */
+    letter-spacing: 0.1em; /* Letter spacing */
+    color: #333;
+    margin-bottom: 2rem; /* More space below title */
+    font-weight: normal;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem; /* Consistent spacing */
+  }
+  
+  /* Custom Input Styling */
+  .custom-input {
+    background-color: #f8f9fa; /* Light grey background */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners for inputs */
+    padding: 12px 15px; /* Comfortable padding */
+    padding-right: 40px; /* Space for the icon */
+    font-size: 0.95rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); /* Subtle inset shadow */
+  }
+  
+  .custom-input:focus {
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Bootstrap-like focus */
+  }
+  
+  /* Style placeholder text */
+  .custom-input::placeholder {
+    color: #adb5bd; /* Lighter placeholder text */
+    font-size: 0.9rem;
+  }
+  
+  /* Password icon positioning */
+  .position-relative {
+    position: relative;
+  }
+  
+  .password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #adb5bd; /* Match placeholder color */
+    display: flex; /* Helps align SVG */
+    align-items: center;
+  }
+  
+  .password-toggle-icon:hover {
+      color: #6c757d; /* Darker on hover */
+  }
+  
+  /* Forgot Password Link */
+  .forgot-password-link {
+    color: #333; /* Darker color */
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .forgot-password-link:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  /* Login Button Styling */
+  .btn-login {
+    background-color: #1abc9c; /* Teal color from image */
+    border-color: #1abc9c;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px; /* Match input radius */
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-login:hover {
+    background-color: #16a085; /* Darker teal on hover */
+    border-color: #16a085;
+    color: #ffffff;
+  }
+  
+  .btn-login:disabled {
+    background-color: #a4e4d5; /* Lighter teal when disabled */
+    border-color: #a4e4d5;
+    cursor: not-allowed;
+  }
+  
+  /* Create Account Link Styling */
+  .create-account-link {
+    font-size: 0.9rem;
+    color: #6c757d; /* Grey text */
+  }
+  
+  .create-account-link a {
+    color: #1abc9c; /* Teal link */
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .create-account-link a:hover {
+    color: #16a085; /* Darker teal on hover */
+    text-decoration: underline;
+  }
+  
+  /* Align text to left within the form group if needed, but image shows center */
+  .form-group label {
+    /* If you add labels back, style them here */
+    /* text-align: left; */
+    /* display: block; */
+    /* margin-bottom: 0.5rem; */
+  }
+  
+  /* Remove default Bootstrap validation icons if they appear */
+  .form-control.is-invalid, .form-control.is-valid {
+    background-image: none;
+    padding-right: 40px; /* Maintain padding */
+  }

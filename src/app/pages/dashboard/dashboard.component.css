@@ -1,0 +1,613 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* === UPDATE FONTS HERE === */
+  --kland-header-font: 'Playfair Display', serif;
+  --kland-body-font: 'Poppins', sans-serif;
+
+  --kland-teal: #009688;
+  --kland-teal-dark: #00796B;
+  --kland-teal-light: #E0F2F1;
+  --kland-grey-icon: #757575;
+  --kland-red-logout: #D32F2F;
+  --kland-text-dark: #212529;
+  --kland-text-light: #ffffff;
+  --kland-text-muted: #6c757d;
+  --kland-border-color: #eeeeee;
+  --kland-white: #fff;
+  --kland-input-bg: #fff;
+  --kland-input-border: #ced4da;
+  --primary-color: var(--kland-teal);
+}
+
+body {
+  font-family: var(--kland-body-font);
+  color: var(--kland-text-dark);
+
+  margin: 0; 
+}
+
+.page-wrapper-light {
+      background-color: #009688;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; 
+}
+
+.page-header {
+  padding: 25px 0;
+  color: var(--kland-text-light);
+  background-color: transparent; 
+
+}
+
+.page-header .logo {
+  height: 55px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+  vertical-align: middle; 
+}
+
+.page-header .title-section {
+    flex-grow: 1;
+    margin: 0 20px; 
+    text-align: center; 
+}
+
+.page-header .page-title {
+  font-family: var(--kland-header-font);
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-header .page-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+}
+.page-header .header-controls a,
+.page-header .header-controls button {
+  color: var(--kland-text-light);
+  text-decoration: none;
+  margin-left: 10px; 
+}
+
+/* Ensure Bootstrap's navbar-toggler structure is used if you want this style */
+.page-header .navbar-toggler {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    padding: 0;
+    line-height: 1;
+}
+.page-header .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
+.user-summary-bar {
+  margin-top: -60px; /* This overlap requires careful layout, ensure it doesn't hide things */
+  position: relative; /* Needed for z-index */
+  z-index: 10;     /* Ensure it's above the header visually */
+}
+
+.user-summary-bar .card {
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--kland-white);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better separation */
+}
+
+/* Check the <img> tag has class="profile-pic-small" */
+.user-summary-bar .profile-pic-small {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #eee;
+  border: 4px solid var(--kland-white);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 15px; /* Add space between pic and text */
+}
+
+/* Check HTML tags for these classes */
+.user-summary-bar .user-name-display {
+  font-weight: 600;
+  color: var(--kland-text-dark);
+}
+
+.user-summary-bar .user-contact-display {
+  font-size: 0.9rem;
+  color: var(--kland-text-muted);
+}
+
+.main-content-area {
+    padding-top: 30px;
+    padding-bottom: 40px; 
+    flex-grow: 1; 
+    width: 100%; 
+
+}
+
+.sidebar-nav {
+  border-radius: 0.75rem;
+  border: none;
+  background-color: var(--kland-white);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
+  margin-bottom: 20px; 
+}
+
+.sidebar-nav .list-group-item {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  border-bottom: 1px solid var(--kland-border-color);
+}
+.sidebar-nav .list-group-item:last-child {
+    border-bottom: none;
+}
+
+.sidebar-nav .list-group-item a {
+  display: flex;
+  align-items: center;
+  padding: 1.1rem 1.25rem;
+  color: var(--kland-text-dark);
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  font-weight: 500;
+}
+
+.sidebar-nav .list-group-item a:hover {
+  background-color: var(--kland-teal-light);
+  color: var(--kland-teal-dark); 
+}
+
+.sidebar-nav .list-group-item i {
+    font-size: 1.1rem;
+    width: 28px;
+    text-align: center;
+    margin-right: 0.75rem;
+    transition: color 0.15s ease-in-out; 
+}
+.sidebar-nav .list-group-item .icon-grey { color: var(--kland-grey-icon); }
+.sidebar-nav .list-group-item .icon-teal { color: var(--kland-teal); }
+.sidebar-nav .list-group-item .icon-red { color: var(--kland-red-logout); }
+
+.sidebar-nav .list-group-item.active a {
+  color: var(--kland-teal);
+  font-weight: 600;
+}
+.sidebar-nav .list-group-item.active a i,
+.sidebar-nav .list-group-item.active a .icon-teal { 
+     color: var(--kland-teal);
+}
+
+.sidebar-nav .list-group-item.logout-item a {
+   color: var(--kland-red-logout);
+}
+.sidebar-nav .list-group-item.logout-item a:hover {
+   background-color: #FDECEA;
+   color: var(--kland-red-logout);
+}
+.sidebar-nav .list-group-item.logout-item a:hover .icon-red {
+   color: var(--kland-red-logout);
+}
+.sidebar-nav .list-group-item.logout-item a .icon-red {
+   color: var(--kland-red-logout);
+}
+
+.content-panel {
+  border-radius: 0.75rem;
+  border: none;
+  background-color: var(--kland-white);
+  padding: 25px 30px; 
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
+}
+
+.content-panel .panel-title {
+  font-family: var(--kland-header-font);
+  font-weight: 700;
+  color: var(--kland-text-dark);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 25px; 
+}
+
+.content-panel .profile-header {
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    margin-bottom: 30px; 
+    position: relative; 
+    flex-wrap: wrap; 
+}
+
+.content-panel .profile-pic-container {
+    position: relative;
+    margin-right: 20px; 
+}
+
+.content-panel .profile-header .profile-pic-large {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #eee;
+  border: 4px solid #f0f0f0;
+  display: block; 
+}
+
+/* Check button class */
+.content-panel .profile-header .edit-pic-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--kland-white);
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.content-panel .profile-header .edit-pic-btn:hover {
+    background-color: #f8f8f8;
+}
+.content-panel .profile-header .edit-pic-btn i {
+    font-size: 0.9rem;
+    color: var(--kland-text-muted);
+}
+
+/* Container for user details */
+.content-panel .profile-header .user-details {
+    text-align: left; 
+}
+
+.content-panel .profile-header .user-name-display {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem; 
+}
+.content-panel .profile-header .user-contact-display {
+    font-size: 0.9rem;
+     color: var(--kland-text-muted); 
+}
+
+
+/* Form Styles */
+.content-panel .form-label {
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--kland-text-muted);
+}
+
+/* Check input, select, textarea tags */
+.content-panel .form-control,
+.content-panel .form-select {
+  border-radius: 0.5rem;
+  border: 1px solid var(--kland-input-border);
+  padding: 0.6rem 1rem;
+  background-color: var(--kland-input-bg);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.content-panel .form-control:focus,
+.content-panel .form-select:focus {
+  border-color: var(--kland-teal);
+  box-shadow: 0 0 0 0.2rem rgba(0, 150, 136, 0.2);
+}
+/* Check readonly inputs */
+.content-panel input[readonly].form-control {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+.content-panel .phone-code-select {
+  max-width: 90px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.content-panel #phoneNumber { 
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+}
+/* Focus behaviour for the whole group */
+.content-panel .input-group:focus-within {
+     border-color: var(--kland-teal);
+     box-shadow: 0 0 0 0.2rem rgba(0, 150, 136, 0.2);
+     border-radius: 0.5rem; 
+}
+.content-panel .input-group:focus-within .form-control,
+.content-panel .input-group:focus-within .form-select,
+.content-panel .input-group:focus-within .toggle-password {
+     border-color: var(--kland-teal) !important; 
+     box-shadow: none !important; 
+     z-index: 3; 
+}
+.content-panel .input-group:focus-within #phoneNumber {
+    border-left: none; 
+}
+
+
+.content-panel .input-group {
+    position: relative; 
+}
+.content-panel .input-group .form-control {
+    padding-right: 3rem; 
+    border-radius: 0.5rem !important; 
+}
+.content-panel .input-group .toggle-password {
+    position: absolute;
+    right: 1px; 
+    top: 1px;  
+    bottom: 1px; 
+    height: calc(100% - 2px); 
+    z-index: 5;
+    border-radius: 0 0.5rem 0.5rem 0; 
+  
+    border: none; 
+    background-color: transparent;
+    padding: 0 0.75rem;
+    color: var(--kland-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.content-panel .input-group .toggle-password:hover {
+    background-color: #f8f9fa;
+}
+.content-panel .input-group .toggle-password i {
+    font-size: 1rem;
+}
+
+
+/* Save Button */
+
+.btn-save {
+  background-color: var(--kland-teal);
+  border-color: var(--kland-teal);
+  color: var(--kland-white);
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, transform 0.1s ease;
+  cursor: pointer;
+}
+.btn-save:hover {
+  background-color: var(--kland-teal-dark);
+  border-color: var(--kland-teal-dark);
+  color: var(--kland-white);
+}
+.btn-save:active {
+    transform: scale(0.98); 
+}
+
+.page-footer {
+  background-color: var(--kland-teal);
+  color: var(--kland-text-light);
+  padding: 40px 0 20px 0; 
+}
+
+.page-footer .footer-title {
+  font-family: var(--kland-header-font);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem !important; 
+  color: var(--kland-white);
+}
+.page-footer .footer-title-small {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem !important; 
+}
+
+
+.page-footer .footer-links {
+    list-style: none; 
+    padding-left: 0;  
+}
+.page-footer .footer-links li {
+  margin-bottom: 0.6rem;
+}
+
+.page-footer .footer-links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+  font-size: 0.95rem;
+}
+.page-footer .footer-links a:hover {
+  color: var(--kland-white);
+  text-decoration: underline;
+}
+
+/* Check <a> tag wrapping image */
+.page-footer .social-icon img {
+  height: 38px;
+  opacity: 0.9;
+  transition: opacity 0.15s ease-in-out, filter 0.15s ease-in-out;
+  filter: grayscale(20%);
+  margin-right: 10px; 
+}
+.page-footer .social-icon img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Check <img> tag */
+.page-footer .footer-logo {
+    max-height: 35px;
+    opacity: 0.95;
+}
+
+/* Check <hr> tag */
+.page-footer .footer-divider {
+  border-color: rgba(255, 255, 255, 0.15);
+  margin: 20px 0; 
+}
+
+/* Check <p> or <span> tag */
+.page-footer .copyright-text {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.page-footer .copyright-text.privacy-link {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    margin-left: 10px;
+}
+.page-footer .copyright-text.privacy-link:hover {
+    color: var(--kland-white);
+    text-decoration: underline;
+}
+
+
+/* Spinner Color */
+.spinner-border.text-teal {
+    color: var(--kland-teal) !important; 
+}
+
+@media (max-width: 991.98px) {
+  .page-header {
+
+  }
+   .page-header .title-section {
+      margin: 10px 0;
+      order: 2;
+      width: 100%; 
+      text-align: center;
+  }
+   .page-header .logo {
+        order: 1;
+        margin-bottom: 10px; 
+   }
+   .page-header .header-controls {
+        order: 3;
+        width: 100%; 
+        justify-content: center; 
+        margin-top: 10px; 
+   }
+
+  /* Adjust summary bar overlap if needed */
+  .user-summary-bar {
+    margin-top: 1rem; 
+  }
+
+  /* Add space below sidebar when it stacks above content */
+  .sidebar-nav {
+      margin-bottom: 1.5rem;
+  }
+
+   /* Center footer content */
+   .page-footer .text-md-end,
+   .page-footer .text-md-start {
+       text-align: center !important;
+   }
+    .page-footer [class^="col-"] { 
+        margin-bottom: 1.5rem; 
+    }
+    .page-footer [class^="col-"]:last-child {
+        margin-bottom: 0;
+    }
+
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .page-header {
+    
+      padding: 20px 0;
+  }
+  .page-header .logo {
+      height: 45px; /* Smaller logo */
+      margin-bottom: 15px;
+      order: 1;
+  }
+  .page-header .title-section {
+      margin-bottom: 15px;
+      order: 2;
+  }
+  .page-header .header-controls {
+      /* width: 80%; */ /* Reconsider fixed width */
+      justify-content: space-around; /* Spread controls a bit */
+      order: 3;
+  }
+
+  .page-header .page-title {
+      font-size: 2.5rem; /* Smaller title */
+  }
+   .page-header .page-subtitle {
+       font-size: 0.9rem;
+   }
+
+   /* Stack user summary content */
+   .user-summary-bar .card-body {
+      display: flex; /* Override Bootstrap's default potentially */
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+  .user-summary-bar .profile-pic-small {
+      margin-right: 0; /* Remove right margin */
+      margin-bottom: 10px; /* Add bottom margin */
+  }
+
+   .content-panel {
+       padding: 20px; /* Reduce padding */
+   }
+   .content-panel .panel-title {
+        font-size: 1.5rem;
+   }
+
+   /* Stack profile header content */
+   .content-panel .profile-header {
+      flex-direction: column;
+      text-align: center;
+      margin-bottom: 20px; /* Adjust space */
+   }
+    .content-panel .profile-pic-container {
+       margin-right: 0;
+       margin-bottom: 10px;
+    }
+    /* Edit button positioning might need fine-tuning here */
+    .content-panel .profile-header .edit-pic-btn {
+       /* Example: Position relative to container */
+        bottom: 0;
+        right: 0;
+    }
+     .content-panel .profile-header .user-details {
+        text-align: center; /* Center text below pic */
+    }
+
+   /* Stack footer elements like "Follow Us" / "Presented By" */
+   .page-footer .d-inline-block { /* Target Bootstrap utility */
+       display: block !important; /* Force block display */
+       margin-right: 0 !important;
+       text-align: center; /* Center the content */
+   }
+   .page-footer .d-inline-block:first-of-type {
+        margin-bottom: 1.5rem; /* Space between stacked blocks */
+   }
+   .page-footer .text-center {
+       text-align: center !important; /* Ensure everything centers */
+   }
+}
