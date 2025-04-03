@@ -29,7 +29,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # angular-auth
 >>>>>>> c39bb8d021a99283f989ec02c7f6a255a804ab86
-![Screenshot 2025-04-02 182644](https://github.com/user-attachments/assets/3e1eb142-40c3-4c37-bc9b-ab0d27873669)
+![Screenshot 2025-04-02 182617](https://github.com/user-attachments/assets/01ceb0b1-3203-4fc9-9024-0dba0ee30585)
+![Screenshot 2025-04-02 182644](https://github.com/user-attachments/assets/6e3549c2-5796-430b-bfdf-c257d77a84bf)
+
 # Angular Auth App
 
 ## 🚀 Project Overview
